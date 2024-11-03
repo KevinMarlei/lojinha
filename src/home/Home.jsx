@@ -36,7 +36,7 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-200 flex justify-center items-center">
+    <div className="min-h-screen bg-neutral-200 flex justify-center items-center ">
       <div className="mainBox bg-white p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3">
         <form onSubmit={searchItem} className="mb-4">
           <input

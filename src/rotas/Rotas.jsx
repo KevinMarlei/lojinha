@@ -7,7 +7,7 @@ import Cart from "../cart/Cart";
 
 function Caminho() {
   return (
-    <Router>
+    <Router basename="/lojinha">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
