@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../fetch/fetchApi";
 import ItensCard from "../itensCard/ItensCard";
-import CartButton from "../cart/CartButton";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -57,8 +56,8 @@ function Home() {
                 title={item.title}
                 condition={item.condition}
                 permalink={item.permalink}
+                handleAddToCart={handleAddToCart}
               />
-              <CartButton item={item} handleAddToCart={handleAddToCart} />
             </div>
           ))}
         </div>
