@@ -13,6 +13,12 @@ function Caminho() {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <footer className="w-full bg-gray-800 text-white fixed bottom-0 flex flex-col items-center text-center">
+        <div>
+          <p>&copy; 2024 Lojinha. All rights reserved.</p>
+          <p>Developed by Kevin Marlei</p>
+        </div>
+      </footer>
     </Router>
   );
 }
