@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ItensCard from "../itensCard/ItensCard";
-import RemoveItem from "./CartRemoveItem";
+import ItensCart from "./ItensCart";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -13,11 +12,13 @@ function Cart() {
   }, []);
 
   const removeFunction = (item) => {
-    const updatedCart = cart.filter(cartItem => cartItem !== item);
-    setCart(updatedCart);
-    localStorage.setItem("carrinho", JSON.stringify(updatedCart));
+    const existingCart = localStorage.getItem("carrinho");
+    const cartItems = existingCart ? JSON.parse(existingCart) : [];
+    const updateCart = cartItems.filter(cartItem => cartItem.id !== item.id); // Comparar pelo ID
+    setCart(updateCart);
+    localStorage.setItem("carrinho", JSON.stringify(updateCart));
     console.log("Item removido:", item);
-    console.log("Carrinho atualizado:", updatedCart);
+    console.log("Carrinho atualizado:", updateCart);
   };
 
   return (
@@ -29,15 +30,16 @@ function Cart() {
         {cart && cart.length > 0 ? (
           cart.map((item, index) => (
             item && item.thumbnail ? (
-              <div key={index} className="cartItem p-4 bg-white rounded-lg shadow-md">
-                <ItensCard
+              <div key={item.id} className="cartItem p-4 bg-white rounded-lg shadow-md">
+                <ItensCart
+                  id={item.id}
+                  condition={item.condition}
                   thumbnail={item.thumbnail}
                   price={item.price}
                   title={item.title}
-                  condition={item.condition}
                   permalink={item.permalink}
+                  removeFunction={removeFunction}
                 />
-                <RemoveItem item={item} removeFunction={removeFunction} />
               </div>
             ) : null
           ))

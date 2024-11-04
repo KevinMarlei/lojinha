@@ -6,6 +6,7 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [cart, setCart] = useState([]);
+  const [nextId, setNextId] = useState(0); // Estado para o próximo ID
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,19 +26,38 @@ function Home() {
     setSearch("");
   };
 
+  const generateUniqueId = () => {
+    let newId = nextId;
+    const existingCart = localStorage.getItem("carrinho");
+    const cartItems = existingCart ? JSON.parse(existingCart) : [];
+
+    // Verifica se o ID já existe no carrinho fora do loop
+    const isDuplicateId = (id) => cartItems.some(item => item.id === id);
+    
+    // Incrementa até encontrar um ID único
+    while (isDuplicateId(newId)) {
+      newId += 1;
+    }
+    
+    return newId;
+  };
+
   const handleAddToCart = (item) => {
     const existingCart = localStorage.getItem("carrinho");
     const cartItems = existingCart ? JSON.parse(existingCart) : [];
-    const updateCart = [...cartItems, item];
+    const uniqueId = generateUniqueId(); // Gera um ID único
+    const newItem = { ...item, id: uniqueId };
+    const updateCart = [...cartItems, newItem];
     setCart(updateCart);
     localStorage.setItem("carrinho", JSON.stringify(updateCart));
+    setNextId(nextId + 1); // Atualiza o próximo ID
     console.log("Cart:", updateCart);
     console.log("useState cart", cart);
   };
 
   return (
-    <div className="min-h-screen bg-neutral-200 flex justify-center items-center ">
-      <div className=" mainBox bg-white p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3">
+    <div className="min-h-screen bg-neutral-200 flex justify-center items-center">
+      <div className="mainBox bg-white p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3">
         <form onSubmit={searchItem} className="mb-4">
           <input
             type="text"
