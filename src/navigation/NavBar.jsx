@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import ToggleButton from "../toggleButton/ToggleButton";
 
-function NavBar() {
+function NavBar({ isDarkMode, toggleTheme }) {
   const [countCart, setCountCart] = useState(0);
 
   useEffect(() => {
@@ -27,9 +28,14 @@ function NavBar() {
             <Link to="/cart">Cart</Link>
           </li>
         </span>
+        <span>
+          <ToggleButton isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+        </span>
         <span className="flex">
           <AiOutlineShoppingCart className="cartWish " />
-          <span className="bg-red-500 rounded-full w-5 h-5 flex items-center justify-center">{countCart}</span>
+          <span className="bg-red-500 rounded-full w-5 h-5 flex items-center justify-center">
+            {countCart}
+          </span>
         </span>
       </ul>
     </nav>

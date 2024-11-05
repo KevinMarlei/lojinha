@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../fetch/fetchApi";
 import ItensCard from "../itensCard/ItensCard";
 
-function Home() {
+function Home({ isDarkMode }) {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [cart, setCart] = useState([]);
@@ -32,13 +32,13 @@ function Home() {
     const cartItems = existingCart ? JSON.parse(existingCart) : [];
 
     // Verifica se o ID já existe no carrinho fora do loop
-    const isDuplicateId = (id) => cartItems.some(item => item.id === id);
-    
+    const isDuplicateId = (id) => cartItems.some((item) => item.id === id);
+
     // Incrementa até encontrar um ID único
     while (isDuplicateId(newId)) {
       newId += 1;
     }
-    
+
     return newId;
   };
 
@@ -56,8 +56,14 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-200 flex justify-center items-center">
-      <div className="mainBox bg-white p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3">
+    <div
+      className={`min-h-screen ${
+        isDarkMode ? "bg-gray-900 " : "bg-neutral-200"
+      } flex justify-center items-center`}
+    >
+      <div
+        className={`mainBox ${isDarkMode ? "bg-gray-900" : "bg-white"} p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3`}
+      >
         <form onSubmit={searchItem} className="mb-4">
           <input
             type="text"
@@ -69,7 +75,10 @@ function Home() {
         </form>
         <div className="anuncios grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {products.map((item, index) => (
-            <div key={index} className={index >= products.length - 2 ? "hidden" : ""}>
+            <div
+              key={index}
+              className={index >= products.length - 2 ? "hidden" : ""}
+            >
               <ItensCard
                 thumbnail={item.thumbnail}
                 price={item.price}

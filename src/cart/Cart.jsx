@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ItensCart from "./ItensCart";
 
-function Cart() {
+function Cart({isDarkMode}) {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -22,9 +22,9 @@ function Cart() {
   };
 
   return (
-    <div className="cartBox bg-gray-200 w-full min-h-screen p-4">
+    <div className={`cartBox ${isDarkMode ? "bg-gray-900" : "bg-gray-200"} w-full min-h-screen p-4`}>
       <span className="block my-6 text-center">
-        <h1 className="text-2xl font-bold">Meu Carrinho</h1>
+        <h1 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-black"}`}>Meu Carrinho</h1>
       </span>
       <div className="cartItems grid grid-cols-1 md:grid-cols-2 gap-4">
         {cart && cart.length > 0 ? (
