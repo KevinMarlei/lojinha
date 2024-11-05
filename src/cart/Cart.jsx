@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ItensCart from "./ItensCart";
 
-function Cart({isDarkMode}) {
+function Cart({ isDarkMode }) {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Cart({isDarkMode}) {
       </span>
       <div className="cartItems grid grid-cols-1 md:grid-cols-2 gap-4">
         {cart && cart.length > 0 ? (
-          cart.map((item, index) => (
+          cart.map((item) => (
             item && item.thumbnail ? (
               <div key={item.id} className="cartItem p-4 bg-white rounded-lg shadow-md">
                 <ItensCart
@@ -39,6 +39,7 @@ function Cart({isDarkMode}) {
                   title={item.title}
                   permalink={item.permalink}
                   removeFunction={removeFunction}
+                  isDarkMode={isDarkMode}
                 />
               </div>
             ) : null

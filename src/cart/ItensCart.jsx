@@ -1,7 +1,7 @@
 import React from "react";
 import RemoveItem from "./CartRemoveItem";
 
-function ItensCart({ condition, thumbnail, price, permalink, title, id, removeFunction }) {
+function ItensCart({ condition, thumbnail, price, permalink, title, id, removeFunction, isDarkMode }) {
   return (
     <div className="boxCard p-4 m-4 bg-white shadow-2xl rounded-xl h-[32rem]">
       <div className="boxImage mb-4">
@@ -16,7 +16,7 @@ function ItensCart({ condition, thumbnail, price, permalink, title, id, removeFu
         </p>
         <p>Condição: {condition === "new" ? "Novo" : "Usado"}</p>
       </div>
-      <RemoveItem item={{ condition, thumbnail, price, permalink, title, id }} removeFunction={removeFunction} />
+      <RemoveItem item={{ condition, thumbnail, price, permalink, title, id }} removeFunction={removeFunction} isDarkMode={isDarkMode}/>
     </div>
   );
 }

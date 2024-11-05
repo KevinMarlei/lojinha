@@ -86,6 +86,7 @@ function Home({ isDarkMode }) {
                 condition={item.condition}
                 permalink={item.permalink}
                 handleAddToCart={handleAddToCart}
+                isDarkMode={isDarkMode}
               />
             </div>
           ))}
