@@ -62,7 +62,7 @@ function Home({ isDarkMode }) {
       } flex justify-center items-center`}
     >
       <div
-        className={`mainBox ${isDarkMode ? "bg-gray-900" : "bg-white"} p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3`}
+        className={`mainBox ${isDarkMode ? "bg-gray-700" : "bg-white"} p-8 rounded-lg shadow-lg w-full md:w-2/3 lg:w-1/2 my-3`}
       >
         <form onSubmit={searchItem} className="mb-4">
           <input
@@ -73,7 +73,7 @@ function Home({ isDarkMode }) {
             className="p-2 border border-gray-300 rounded w-full"
           />
         </form>
-        <div className="anuncios grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className={`anuncios ${isDarkMode ? "bg-slate-500" : ""} grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3`}>
           {products.map((item, index) => (
             <div
               key={index}

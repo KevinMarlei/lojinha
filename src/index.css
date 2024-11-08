@@ -9,3 +9,15 @@ body {
 body {
   overflow-x: hidden; /* Remove a rolagem horizontal */
 }
+
+@media (max-width: 768px){
+  .ulResponsive{
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    gap: 10%;
+  }
+  .navResponsive{
+    width: 100%;
+  }
+}

@@ -11,18 +11,18 @@ function ItensCard({
   isDarkMode,
 }) {
   return (
-    <div className="boxCard p-4 m-4 bg-white shadow-2xl rounded-xl h-[32rem]">
-      <div className="boxImage mb-4">
+    <div className={`boxCard p-4 m-4 ${isDarkMode ? "bg-gray-700" : "bg-white"}  shadow-2xl rounded-xl h-[32rem]`}>
+      <div className="boxImage mb-4 w-full h-3/6" >
         <a
           href={permalink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex justify-center"
+          className="flex justify-center h-full w-full"
         >
           <img
             src={thumbnail}
             alt={title}
-            className="w-[15rem] h-[15rem] object-cover"
+            className="w-[100%] h-[100%] object-center object-fill"
           />
         </a>
       </div>

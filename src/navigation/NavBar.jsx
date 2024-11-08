@@ -18,8 +18,8 @@ function NavBar({ isDarkMode, toggleTheme }) {
   }, []);
 
   return (
-    <nav className="w-dvw bg-gray-700 flex justify-center">
-      <ul className="w-1/2 flex justify-between items-center bg-slate-300">
+    <nav className="navResponsive w-dvw bg-gray-700 flex justify-center">
+      <ul className="ulResponsive w-3/6 flex justify-between items-center bg-slate-300">
         <span className="flex justify-between w-24 ">
           <li className="bg-slate-100 hover:bg-slate-200 font-bold py-2 px-4  ">
             <Link to="/">Home</Link>
