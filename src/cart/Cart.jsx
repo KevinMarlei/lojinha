@@ -22,15 +22,15 @@ function Cart({ isDarkMode }) {
   };
 
   return (
-    <div className={`cartBox ${isDarkMode ? "bg-gray-900" : "bg-gray-200"} w-full min-h-screen p-4`}>
+    <div className={`cartBox ${isDarkMode ? "bg-gray-900" : "bg-gray-200"} w-full min-h-screen p-4 flex flex-col items-center`}>
       <span className="block my-6 text-center">
         <h1 className={`text-2xl font-bold ${isDarkMode ? "text-white" : "text-black"}`}>Meu Carrinho</h1>
       </span>
-      <div className="cartItems grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="cartItems grid grid-cols-1 md:grid-cols-4 gap-4 w-3/4">
         {cart && cart.length > 0 ? (
           cart.map((item) => (
             item && item.thumbnail ? (
-              <div key={item.id} className="cartItem p-4 bg-white rounded-lg shadow-md">
+              <div key={item.id} className={`cartItem p-4 ${isDarkMode ? "bg-gray-700" : "bg-white"} rounded-lg shadow-md`}>
                 <ItensCart
                   id={item.id}
                   condition={item.condition}
